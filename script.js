@@ -5,6 +5,36 @@
 
 /* ================= PAGE NAVIGATION ================= */
 
+
+const SUPABASE_URL = "https://awipsbdyztugxqxqvplt.supabase.co";
+const SUPABASE_KEY = "sb_publishable_zg5HSjtZFmERM-DDUm2ZmQ_7azAj-wZ";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+console.log("Supabase connected:", supabaseClient);
+
+async function testSupabase() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("collectors")
+            .select("*");
+
+    if (error) {
+
+        console.error("Supabase Error:", error);
+
+        return;
+    }
+
+    console.log("Collectors:", data);
+}
+
+testSupabase();
+
 function showPage(pageId) {
 
     const pages = document.querySelectorAll(".page");
