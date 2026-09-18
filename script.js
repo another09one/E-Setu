@@ -24,9 +24,7 @@ async function testSupabase() {
             .select("*");
 
     if (error) {
-
         console.error("Supabase Error:", error);
-
         return;
     }
 
