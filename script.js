@@ -32,6 +32,43 @@ async function testSupabase() {
 }
 
 testSupabase();
+async function loadRecyclers() {
+
+    const { data, error } = await supabaseClient
+        .from("recyclers")
+        .select("*")
+        .order("rating", { ascending: false });
+
+    if (error) {
+        console.error("Recycler loading error:", error);
+        return;
+    }
+
+    console.log("✅ Recyclers loaded from Supabase:", data);
+
+    return data;
+}
+
+loadRecyclers();
+
+async function loadRecyclers() {
+
+    const { data, error } = await supabaseClient
+        .from("recyclers")
+        .select("*")
+        .order("rating", { ascending: false });
+
+    if (error) {
+        console.error("Recycler loading error:", error);
+        return;
+    }
+
+    console.log("✅ Recyclers loaded from Supabase:", data);
+
+    return data;
+}
+
+loadRecyclers();
 
 function showPage(pageId) {
 
