@@ -2,8 +2,6 @@
 
 Responsive SIH 2026 PS 26229 landing page plus clickable Collector, Recycler and EPR demo flows.
 
-## Deploy to Netlify
-Extract the ZIP and upload the folder contents through Netlify Deploys/drag-and-drop.
 
 ## Included
 - Responsive landing page
