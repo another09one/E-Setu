@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- IMPORTANT FOR RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Setu | Smart E-Waste Platform</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>♻</span> E-Setu
+    </div>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('collector')">Collector</a>
+        <a href="#" onclick="showPage('recycler')">Recycler</a>
+        <a href="#" onclick="showPage('admin')">EPR Dashboard</a>
+    </nav>
+
+    <div class="online-status">
+        <span></span> Online
+    </div>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                AI-Driven E-Waste Management
+            </div>
+
+            <h1>
+                Connecting <span>Collectors</span>
+                to Formal Recycling
+            </h1>
+
+            <p>
+                E-Setu brings informal e-waste collectors
+                into a transparent, traceable and compliant
+                recycling ecosystem.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                        onclick="showPage('collector')">
+                    Start Collection →
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="showPage('admin')">
+                    View EPR Dashboard
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="floating-icon">♻</div>
+
+            <h3>Today's Impact</h3>
+
+            <div class="impact-number">
+                2,486 <small>kg</small>
+            </div>
+
+            <p>E-waste routed for authorized recycling</p>
+
+            <div class="mini-stats">
+
+                <div>
+                    <strong>184</strong>
+                    <span>Collectors</span>
+                </div>
+
+                <div>
+                    <strong>42</strong>
+                    <span>Recyclers</span>
+                </div>
+
+                <div>
+                    <strong>327</strong>
+                    <span>Handovers</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        <p>HOW E-SETU WORKS</p>
+        <h2>From Collection to Recycling</h2>
+    </div>
+
+
+    <div class="workflow">
+
+        <div class="workflow-card">
+            <div>🎤</div>
+            <h3>Report</h3>
+            <p>Voice or photo based reporting</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-card">
+            <div>🤖</div>
+            <h3>Identify</h3>
+            <p>AI identifies e-waste category</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-card">
+            <div>♻️</div>
+            <h3>Match</h3>
+            <p>Find suitable authorized recycler</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-card">
+            <div>⚖️</div>
+            <h3>Verify</h3>
+            <p>Weight, location and handover</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-card">
+            <div>💰</div>
+            <h3>Pay</h3>
+            <p>Digital transaction and receipt</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= COLLECTOR ================= -->
+
+<section id="collector" class="page">
+
+    <div class="dashboard-header">
+
+        <div>
+            <p class="eyebrow">COLLECTOR PORTAL</p>
+            <h1>Collector Dashboard</h1>
+            <p>Manage your e-waste collections.</p>
+        </div>
+
+        <div class="collector-profile">
+            <div class="avatar">RK</div>
+
+            <div>
+                <strong>Ramesh Kumar</strong>
+                <small>ID: ES-KB-1042</small>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <span>Collections</span>
+            <strong>127</strong>
+            <small>+12 this month</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Total Weight</span>
+            <strong>486 kg</strong>
+            <small>+42 kg this week</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Handovers</span>
+            <strong>93</strong>
+            <small>Successfully completed</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Earnings</span>
+            <strong>₹28,450</strong>
+            <small>This month</small>
+        </div>
+
+    </div>
+
+
+    <!-- COLLECTION FLOW -->
+
+    <div class="collection-container">
+
+        <div class="collection-main">
+
+            <div class="card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <p class="eyebrow">NEW COLLECTION</p>
+                        <h2>Report E-Waste</h2>
+                    </div>
+
+                    <span class="step-counter" id="stepCounter">
+                        Step 1 of 5
+                    </span>
+
+                </div>
+
+
+                <!-- STEP 1 -->
+
+                <div class="collection-step active" id="step1">
+
+                    <div class="report-box">
+
+                        <div class="upload-icon">📷</div>
+
+                        <h3>Upload E-Waste Photo</h3>
+
+                        <p>
+                            Take a photo or upload an image
+                            of the e-waste.
+                        </p>
+
+                        <input type="file"
+                               id="wasteImage"
+                               accept="image/*"
+                               hidden>
+
+                        <button class="secondary-btn"
+                                onclick="document.getElementById('wasteImage').click()">
+                            Choose Photo
+                        </button>
+
+                    </div>
+
+
+                    <div class="voice-box">
+
+                        <div class="mic">🎤</div>
+
+                        <div>
+                            <strong>Prefer speaking?</strong>
+                            <p>Record a voice description</p>
+                        </div>
+
+                        <button onclick="simulateVoice()">
+                            Start Voice
+                        </button>
+
+                    </div>
+
+                    <p id="voiceResult" class="voice-result"></p>
+
+
+                    <button class="primary-btn full-btn"
+                            onclick="nextStep(2)">
+                        Identify E-Waste →
+                    </button>
+
+                </div>
+
+
+
+                <!-- STEP 2 -->
+
+                <div class="collection-step" id="step2">
+
+                    <div class="ai-analysis">
+
+                        <div class="ai-image">
+                            💻
+                        </div>
+
+                        <div class="ai-content">
+
+                            <div class="ai-status">
+                                ✓ AI Analysis Complete
+                            </div>
+
+                            <h2>Laptop</h2>
+
+                            <p class="muted">
+                                E-Waste Category: <strong>ITEW2</strong>
+                            </p>
+
+                            <div class="confidence">
+                                <span>Confidence</span>
+                                <strong>94%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div style="width:94%"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="material-grid">
+
+                        <div>
+                            <span>Estimated Weight</span>
+                            <strong>8.4 kg</strong>
+                        </div>
+
+                        <div>
+                            <span>Copper</span>
+                            <strong>0.42 kg</strong>
+                        </div>
+
+                        <div>
+                            <span>Aluminium</span>
+                            <strong>1.12 kg</strong>
+                        </div>
+
+                        <div>
+                            <span>Other Materials</span>
+                            <strong>6.86 kg</strong>
+                        </div>
+
+                    </div>
+
+
+                    <button class="primary-btn full-btn"
+                            onclick="nextStep(3)">
+                        Find Recycler →
+                    </button>
+
+                </div>
+
+
+
+                <!-- STEP 3 -->
+
+                <div class="collection-step" id="step3">
+
+                    <div class="matching-header">
+
+                        <div>
+                            <h2>Recommended Recyclers</h2>
+                            <p>
+                                Based on price, distance and authorization.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="recycler-options">
+
+                        <div class="recycler-option selected"
+                             onclick="selectRecycler(this, 'GreenCycle Recycling')">
+
+                            <div class="recycler-logo">♻</div>
+
+                            <div class="recycler-info">
+
+                                <h3>GreenCycle Recycling</h3>
+
+                                <div class="rating">
+                                    ★ 4.8
+                                </div>
+
+                                <p>
+                                    Authorized Recycler ✓
+                                </p>
+
+                                <div class="recycler-meta">
+                                    <span>📍 18 km</span>
+                                    <span>₹72/kg</span>
+                                    <span>Capacity: High</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="recycler-option"
+                             onclick="selectRecycler(this, 'EcoWaste Solutions')">
+
+                            <div class="recycler-logo">♻</div>
+
+                            <div class="recycler-info">
+
+                                <h3>EcoWaste Solutions</h3>
+
+                                <div class="rating">
+                                    ★ 4.6
+                                </div>
+
+                                <p>
+                                    Authorized Recycler ✓
+                                </p>
+
+                                <div class="recycler-meta">
+                                    <span>📍 25 km</span>
+                                    <span>₹68/kg</span>
+                                    <span>Capacity: Medium</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="recycler-option"
+                             onclick="selectRecycler(this, 'Green Earth Recyclers')">
+
+                            <div class="recycler-logo">♻</div>
+
+                            <div class="recycler-info">
+
+                                <h3>Green Earth Recyclers</h3>
+
+                                <div class="rating">
+                                    ★ 4.5
+                                </div>
+
+                                <p>
+                                    Authorized Recycler ✓
+                                </p>
+
+                                <div class="recycler-meta">
+                                    <span>📍 31 km</span>
+                                    <span>₹70/kg</span>
+                                    <span>Capacity: High</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="primary-btn full-btn"
+                            onclick="nextStep(4)">
+                        Select Recycler →
+                    </button>
+
+                </div>
+
+
+
+                <!-- STEP 4 -->
+
+                <div class="collection-step" id="step4">
+
+                    <div class="verification-box">
+
+                        <div class="verification-icon">
+                            ✓
+                        </div>
+
+                        <h2>Verify Handover</h2>
+
+                        <p>
+                            Confirm the collection before payment.
+                        </p>
+
+                    </div>
+
+
+                    <div class="verification-details">
+
+                        <div>
+                            <span>Recycler</span>
+                            <strong id="selectedRecycler">
+                                GreenCycle Recycling
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>E-Waste</span>
+                            <strong>Laptop × 2</strong>
+                        </div>
+
+                        <div>
+                            <span>Weight</span>
+                            <strong>8.4 kg</strong>
+                        </div>
+
+                        <div>
+                            <span>Location</span>
+                            <strong>📍 Raigarh, Chhattisgarh</strong>
+                        </div>
+
+                        <div>
+                            <span>Timestamp</span>
+                            <strong id="timestamp"></strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="verification-checks">
+
+                        <p>✓ Digital weighing verified</p>
+                        <p>✓ GPS location captured</p>
+                        <p>✓ Collector identity verified</p>
+
+                    </div>
+
+
+                    <button class="primary-btn full-btn"
+                            onclick="nextStep(5)">
+                        Confirm Handover →
+                    </button>
+
+                </div>
+
+
+
+                <!-- STEP 5 -->
+
+                <div class="collection-step" id="step5">
+
+                    <div class="payment-success">
+
+                        <div class="success-icon">
+                            ✓
+                        </div>
+
+                        <h2>Handover Successful</h2>
+
+                        <p>
+                            Your e-waste has been successfully
+                            transferred to the recycler.
+                        </p>
+
+                    </div>
+
+
+                    <div class="payment-card">
+
+                        <p>PAYMENT</p>
+
+                        <h1>₹604.80</h1>
+
+                        <div class="payment-row">
+                            <span>Weight</span>
+                            <strong>8.4 kg</strong>
+                        </div>
+
+                        <div class="payment-row">
+                            <span>Rate</span>
+                            <strong>₹72/kg</strong>
+                        </div>
+
+                        <div class="payment-row">
+                            <span>Method</span>
+                            <strong>UPI Escrow</strong>
+                        </div>
+
+                        <div class="payment-row">
+                            <span>Transaction ID</span>
+                            <strong>ES202609180421</strong>
+                        </div>
+
+                    </div>
+
+
+                    <button class="primary-btn full-btn"
+                            onclick="showReceipt()">
+                        View Digital Receipt →
+                    </button>
+
+                    <button class="text-btn"
+                            onclick="resetCollection()">
+                        Start New Collection
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIDE PANEL -->
+
+        <aside class="collection-side">
+
+            <div class="card">
+
+                <p class="eyebrow">COLLECTION STATUS</p>
+
+                <div class="status-line">
+                    <span class="active-dot"></span>
+                    System Online
+                </div>
+
+                <hr>
+
+                <p class="eyebrow">OFFLINE SUPPORT</p>
+
+                <p class="muted">
+                    Transactions can be saved locally
+                    and synced when internet is restored.
+                </p>
+
+                <button class="offline-btn"
+                        onclick="simulateOffline()">
+                    Test Offline Mode
+                </button>
+
+                <div id="offlineMessage"></div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RECYCLER ================= -->
+
+<section id="recycler" class="page">
+
+    <div class="dashboard-header">
+
+        <div>
+            <p class="eyebrow">RECYCLER PORTAL</p>
+            <h1>Recycler Dashboard</h1>
+            <p>Manage incoming e-waste lots.</p>
+        </div>
+
+        <div class="authorized">
+            ✓ Authorized Recycler
+        </div>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <span>Incoming Lots</span>
+            <strong>12</strong>
+            <small>Needs attention</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Accepted</span>
+            <strong>38</strong>
+            <small>This month</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Processing</span>
+            <strong>24</strong>
+            <small>Current lots</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Completed</span>
+            <strong>86</strong>
+            <small>Total</small>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-heading">
+
+            <div>
+                <p class="eyebrow">RECENT LOTS</p>
+                <h2>Incoming E-Waste</h2>
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Lot ID</th>
+                        <th>Material</th>
+                        <th>Weight</th>
+                        <th>Collector</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>ES-1024</td>
+                        <td>Laptop</td>
+                        <td>8.4 kg</td>
+                        <td>Ramesh Kumar</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>
+                            <button class="small-btn"
+                                    onclick="acceptLot(this)">
+                                Accept
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>ES-1025</td>
+                        <td>Mobile</td>
+                        <td>4.2 kg</td>
+                        <td>Arun Kumar</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>✓</td>
+                    </tr>
+
+                    <tr>
+                        <td>ES-1026</td>
+                        <td>PCB</td>
+                        <td>2.1 kg</td>
+                        <td>Vikas Sahu</td>
+                        <td><span class="status processing">Processing</span></td>
+                        <td>View</td>
+                    </tr>
+
+                    <tr>
+                        <td>ES-1027</td>
+                        <td>Desktop</td>
+                        <td>11.6 kg</td>
+                        <td>Rahul Singh</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>
+                            <button class="small-btn"
+                                    onclick="acceptLot(this)">
+                                Accept
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADMIN / EPR ================= -->
+
+<section id="admin" class="page">
+
+    <div class="dashboard-header">
+
+        <div>
+            <p class="eyebrow">EPR / ADMIN</p>
+            <h1>EPR Monitoring Dashboard</h1>
+            <p>Track the complete e-waste lifecycle.</p>
+        </div>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <span>Total E-Waste</span>
+            <strong>2,486 kg</strong>
+            <small>Collected</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Authorized Recycling</span>
+            <strong>2,210 kg</strong>
+            <small>88.9%</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Collectors</span>
+            <strong>184</strong>
+            <small>Onboarded</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Handovers</span>
+            <strong>327</strong>
+            <small>Verified</small>
+        </div>
+
+    </div>
+
+
+    <div class="admin-grid">
+
+        <div class="card">
+
+            <p class="eyebrow">LIFECYCLE</p>
+
+            <h2>Transaction Journey</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item done">
+                    <span>1</span>
+                    <div>
+                        <strong>Collected</strong>
+                        <p>E-waste reported</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item done">
+                    <span>2</span>
+                    <div>
+                        <strong>Identified</strong>
+                        <p>AI classification</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item done">
+                    <span>3</span>
+                    <div>
+                        <strong>Matched</strong>
+                        <p>Recycler selected</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item done">
+                    <span>4</span>
+                    <div>
+                        <strong>Verified</strong>
+                        <p>Weight + GPS recorded</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span>5</span>
+                    <div>
+                        <strong>Recycled</strong>
+                        <p>Authorized processing</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <p class="eyebrow">ENVIRONMENTAL IMPACT</p>
+
+            <h2>Impact Overview</h2>
+
+            <div class="impact-list">
+
+                <div>
+                    <span>♻️</span>
+                    <div>
+                        <strong>2,210 kg</strong>
+                        <p>Authorized recycling</p>
+                    </div>
+                </div>
+
+                <div>
+                    <span>🌱</span>
+                    <div>
+                        <strong>1,320 kg</strong>
+                        <p>Estimated material recovery</p>
+                    </div>
+                </div>
+
+                <div>
+                    <span>🚛</span>
+                    <div>
+                        <strong>327</strong>
+                        <p>Verified handovers</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card audit-card">
+
+        <p class="eyebrow">AUDIT TRAIL</p>
+
+        <h2>Recent Transactions</h2>
+
+        <div class="audit-list">
+
+            <div>
+                <span>ES-1024</span>
+                <strong>Laptop — 8.4 kg</strong>
+                <small>Verified ✓</small>
+            </div>
+
+            <div>
+                <span>ES-1023</span>
+                <strong>Mobile — 4.2 kg</strong>
+                <small>Verified ✓</small>
+            </div>
+
+            <div>
+                <span>ES-1022</span>
+                <strong>PCB — 2.1 kg</strong>
+                <small>Verified ✓</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RECEIPT MODAL ================= -->
+
+<div class="modal" id="receiptModal">
+
+    <div class="receipt">
+
+        <button class="close-btn"
+                onclick="closeReceipt()">
+            ×
+        </button>
+
+        <div class="receipt-logo">
+            ♻
+        </div>
+
+        <h2>E-Setu</h2>
+
+        <p class="eyebrow">DIGITAL TRANSACTION RECEIPT</p>
+
+        <hr>
+
+        <div class="receipt-row">
+            <span>Transaction ID</span>
+            <strong>ES202609180421</strong>
+        </div>
+
+        <div class="receipt-row">
+            <span>Collector</span>
+            <strong>Ramesh Kumar</strong>
+        </div>
+
+        <div class="receipt-row">
+            <span>Recycler</span>
+            <strong>GreenCycle Recycling</strong>
+        </div>
+
+        <div class="receipt-row">
+            <span>Material</span>
+            <strong>Laptop × 2</strong>
+        </div>
+
+        <div class="receipt-row">
+            <span>Weight</span>
+            <strong>8.4 kg</strong>
+        </div>
+
+        <div class="receipt-row">
+            <span>Location</span>
+            <strong>Raigarh, Chhattisgarh</strong>
+        </div>
+
+        <div class="receipt-row">
+            <span>Payment</span>
+            <strong>₹604.80</strong>
+        </div>
+
+        <div class="receipt-success">
+            ✓ VERIFIED TRANSACTION
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
