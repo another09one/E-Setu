@@ -1,4 +1,4 @@
-# E-Setu Responsive Website v2
+# E-Setu Website 
 
 Responsive SIH 2026 PS 26229 landing page plus clickable Collector, Recycler and EPR demo flows.
 
