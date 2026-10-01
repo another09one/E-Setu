@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>E-Setu | Register</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f8f6;
+            color: #111827;
+        }
+
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #08a94f;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin: 8px 0 30px;
+        }
+
+        .role-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .role-btn {
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .role-btn.active {
+            background: #08a94f;
+            color: white;
+            border-color: #08a94f;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            margin-bottom: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            background: #08a94f;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+        }
+
+        .register-link a {
+            color: #08a94f;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="logo">
+            ♻️ E-<span>Setu</span>
+        </div>
+
+        <div class="subtitle">
+            Create your E-Setu account
+        </div>
+
+
+        <div class="role-buttons">
+
+            <button
+                class="role-btn active"
+                id="collectorBtn"
+                onclick="selectRole('collector')">
+
+                👤 Collector
+
+            </button>
+
+
+            <button
+                class="role-btn"
+                id="recyclerBtn"
+                onclick="selectRole('recycler')">
+
+                ♻️ Recycler
+
+            </button>
+
+        </div>
+
+
+        <form id="registerForm">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Create a password"
+                minlength="6"
+                required
+            >
+
+
+            <label>Phone</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter phone number"
+                required
+            >
+
+
+            <button
+                class="register-btn"
+                type="submit">
+
+                Create Account
+
+            </button>
+
+        </form>
+
+
+        <div id="message"></div>
+
+
+        <div class="register-link">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+
+<script>
+
+let selectedRole = "collector";
+
+
+function selectRole(role) {
+
+    selectedRole = role;
+
+    document
+        .getElementById("collectorBtn")
+        .classList.toggle(
+            "active",
+            role === "collector"
+        );
+
+    document
+        .getElementById("recyclerBtn")
+        .classList.toggle(
+            "active",
+            role === "recycler"
+        );
+}
+
+
+document
+    .getElementById("registerForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            const phone =
+                document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+            const message =
+                document.getElementById("message");
+
+
+            message.textContent =
+                "Creating account...";
+
+
+            message.style.color =
+                "#6b7280";
+
+
+            const { data, error } =
+                await supabaseClient.auth.signUp({
+
+                    email: email,
+
+                    password: password,
+
+                    options: {
+
+                        data: {
+
+                            name: name,
+
+                            phone: phone,
+
+                            role: selectedRole
+
+                        }
+
+                    }
+
+                });
+
+
+            if (error) {
+
+                message.textContent =
+                    error.message;
+
+                message.style.color =
+                    "#dc2626";
+
+                return;
+            }
+
+
+            message.textContent =
+                "Account created successfully!";
+
+            message.style.color =
+                "#08a94f";
+
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1500);
+
+        }
+
+    );
+
+</script>
+
+</body>
+</html>

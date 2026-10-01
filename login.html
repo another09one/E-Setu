@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Setu | Login</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f8f6;
+            color: #111827;
+        }
+
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .logo span {
+            color: #08a94f;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .role-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .role-btn {
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .role-btn.active {
+            background: #08a94f;
+            color: white;
+            border-color: #08a94f;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            margin-bottom: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #08a94f;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #078d42;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+        }
+
+        .register-link a {
+            color: #08a94f;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #374151;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="logo">
+            ♻️ E-<span>Setu</span>
+        </div>
+
+        <div class="subtitle">
+            Login to your E-Setu account
+        </div>
+
+        <div class="role-buttons">
+
+            <button class="role-btn active"
+                    id="collectorBtn"
+                    onclick="selectRole('collector')">
+                👤 Collector
+            </button>
+
+            <button class="role-btn"
+                    id="recyclerBtn"
+                    onclick="selectRole('recycler')">
+                ♻️ Recycler
+            </button>
+
+        </div>
+
+        <form id="loginForm">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button class="login-btn" type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <div class="register-link">
+            Don't have an account?
+            <a href="register.html">Create one</a>
+        </div>
+
+        <div class="back">
+            <a href="index.html">← Back to E-Setu</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+<script>
+
+let selectedRole = "collector";
+
+function selectRole(role) {
+
+    selectedRole = role;
+
+    document
+        .getElementById("collectorBtn")
+        .classList.toggle("active", role === "collector");
+
+    document
+        .getElementById("recyclerBtn")
+        .classList.toggle("active", role === "recycler");
+}
+
+
+document
+    .getElementById("loginForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const message =
+            document.getElementById("message");
+
+        message.textContent = "Logging in...";
+        message.style.color = "#6b7280";
+
+
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+                password: password
+
+            });
+
+
+        if (error) {
+
+            message.textContent = error.message;
+            message.style.color = "#dc2626";
+
+            return;
+        }
+
+
+        message.textContent = "Login successful!";
+        message.style.color = "#08a94f";
+
+
+        // Temporary redirect
+        if (selectedRole === "collector") {
+
+            window.location.href = "index.html";
+
+        } else {
+
+            window.location.href = "index.html";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
