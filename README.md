@@ -1,22 +1,9 @@
-# Kabadiwala Connect — SIH26229 Dynamic MVP
+# E-Setu Responsive Website v2
 
-A Supabase-backed prototype for:
-Collector → Capture → Classify → Value → Match → Handover → Passport → Earnings
+Responsive SIH 2026 PS 26229 landing page plus clickable Collector, Recycler and EPR demo flows.
 
-## Stack
-- HTML/CSS/JavaScript frontend
-- Supabase Auth + PostgreSQL + Storage
-- Browser localStorage for offline lot queue
-- Rule-based demo AI classifier/value engine (replaceable by an ML API)
-- Browser Geolocation
-- Recycler matching and Collection Passport
-
-## 1. Supabase setup
-Create a Supabase project.
-
-Run `supabase/schema.sql` in Supabase SQL Editor.
-
-Create a public Storage bucket named `e-waste-images` OR change the policy/bucket settings in the SQL.
+## Deploy to Netlify
+Extract the ZIP and upload the folder contents through Netlify Deploys/drag-and-drop.
 
 ## 2. Configure frontend
 Open `js/config.js` and replace:
